@@ -1,0 +1,459 @@
+<div class="row header">
+  <div class="col-lg-12 col-xs-12 col-md-12">
+    <div class="hidden-xs backArrow">
+      <span class="fa fa-arrow-left"></span>
+    </div>
+    <div class="selectDropdown">
+      <div class="dropdownLabel">
+        <span>Showing Details of GSTIN:</span>
+      </div>
+      <div class="dropdownValue">
+        <select>
+          <option>21ASPKFJ8701A</option>
+          <option>11ASPKFJ8701A</option>
+          <option>25ASPKFJ8701A</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row secondRow">
+  <div class="summary">
+    <span>You seem to have claimed 92% extra credit as against the records updated by your supplier</span>
+  </div>
+  <div style="text-align: center;">
+    <div class="bottomBorder"></div>
+  </div>
+</div>
+<div class="row thirdRow">
+  <div class="col-lg-2 col-xs-12 ">
+    <div class="yearSummary">
+      <span style="display: block;font-size: 22px;font-weight: 700">Year 2017</span>
+      <span style="display: block;font-size: 12px;color:#7cc241">Excess: 68.70%</span>
+    </div>
+  </div>
+  <div class="col-lg-10 hidden-xs">
+    <div *ngFor="let mon of monthList;let i=index" style="display: inline-block;" [style.margin-left]="i==0?'30px':'0px'" (click)="setActive(mon)"> 
+      <span class="monthName" [style.color]="mon.id==activeMonth.id?'#7cc241':'black'" [style.font-weight]="mon.id==activeMonth.id?'700':'600'" >{{mon.month}}</span>
+      <div class="circle" [style.background]="mon.id==activeMonth.id?'#7cc241':'lightgray'" ></div>
+    </div>
+    <div class="timeline"></div>
+  </div>
+</div>
+<div class="row fourthRow">
+  <div class="row">
+    <div class="col-lg-3 col-xs-12">
+      
+      <table class="table yearly">
+        <thead>
+          <tr>
+            <td></td>
+            <td>GSTR 2A</td>
+            <td>GSTR 3B</td>
+            <td>Excess/Deficit</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>IGST:</td>
+            <td>1234567</td>
+            <td>1234567</td>
+            <td>1234567</td>
+          </tr>
+          <tr>
+            <td>CGST:</td>
+            <td>1234567</td>
+            <td>1234567</td>
+            <td>1234567</td>
+          </tr>
+          <tr>
+            <td>SGST:</td>
+            <td>1234567</td>
+            <td>1234567</td>
+            <td>1234567</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>Total:</td>
+            <td>1234567</td>
+            <td>1234567</td>
+            <td>1234567</td>
+          </tr>
+        </tfoot>
+      </table>
+  
+    </div>
+    <div class="col-lg-9 visible-lg">
+      <div class="monthlySummary">
+        <span class="arrow" [style.left.px]="currentPosition" ></span>
+        <div class="header">
+          <span>March 2018:</span>
+          <span>Excess of 25%</span>
+        </div>
+        <div>
+          <table class="table monthly desktopview">
+            <thead>
+              <tr>
+                <th>GSTR</th>
+                <th>IGST</th>
+                <th>CGST</th>
+                <th>SGST</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>GSTR 2A</td>
+                <td>1234567</td>
+                <td>1234567</td>
+                <td>1234567</td>
+                <td>1234567</td>
+              </tr>
+              <tr>
+                <td>GSTR 3B</td>
+                <td>1234567</td>
+                <td>1234567</td>
+                <td>1234567</td>
+                <td>1234567</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Excess/Deficit</td>
+                <td>1234567</td>
+                <td>1234567</td>
+                <td>1234567</td>
+                <td>1234567</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="row visible-xs mobileView">
+    <div class="mobileheader">
+      <span>Monthly Report</span>
+    </div>
+    <div style="padding:0px 15px;padding-bottom: 10px">
+      <div class="monthlyData" [style.box-shadow]="isClick=='jan'?'0px 3px 12px -6px #777':''">
+        <div class="headerData">
+          <input type="radio" name="radiogroup" [value]="jan" (change)="onSelectionChange('jan')" checked>
+          <span>January</span><span *ngIf="isClick=='jan'">:Excess of 68.67%</span>
+          <span style="float:right;color: #7cc241" class="fa fa-sort-desc" *ngIf="isClick!='jan'"></span>
+          <span style="float: right;color: #7cc241" *ngIf="isClick!='jan'" >45.89%</span>
+          <div [ngClass]="isClick=='jan'?'monthBorder':''"></div>
+          <div style="clear:both"></div>
+        </div>
+        <div class="bodyData" *ngIf="isClick=='jan'" [style.border-top]="isClick=='jan'?'none':'1px solid #efefef'">
+          <table class="table monthwise">
+            <thead>
+              <tr>
+                <th></th>
+                <th>GSTR 2A</th>
+                <th>GSTR 3B</th>
+                <th>Excess/Deficit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>IGST:</td>
+                <td>1000</td>
+                <td>6000</td>
+                <td>7000</td>
+              </tr>
+              <tr>
+                <td>CGST:</td>
+                <td>1000</td>
+                <td>6000</td>
+                <td>7000</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Total:</td>
+                <td>3456</td>
+                <td>3456</td>
+                <td>3456</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="monthlyData" [style.box-shadow]="isClick=='feb'?'0px 3px 12px -6px #777':''">
+        <div class="headerData">
+          <input type="radio" name="radiogroup" [value]="feb" (change)="onSelectionChange('feb')">
+          <span>February</span><span *ngIf="isClick=='feb'">:Excess of 68.67%</span>
+          <span style="float:right;color: #7cc241" class="fa fa-sort-desc" *ngIf="isClick!='feb'"></span>
+          <span style="float: right;color: #7cc241" *ngIf="isClick!='feb'">45.89%</span>
+          <div [ngClass]="isClick=='feb'?'monthBorder':''"></div>
+          <div style="clear:both"></div>
+        </div>
+        <div class="bodyData" *ngIf="isClick=='feb'" [style.border-top]="isClick=='feb'?'none':'1px solid #efefef'">
+          <table class="table monthwise">
+            <thead>
+              <tr>
+                <th></th>
+                <th>GSTR 2A</th>
+                <th>GSTR 3B</th>
+                <th>Excess/Deficit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>IGST:</td>
+                <td>1000</td>
+                <td>6000</td>
+                <td>7000</td>
+              </tr>
+              <tr>
+                <td>CGST:</td>
+                <td>1000</td>
+                <td>6000</td>
+                <td>7000</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Total:</td>
+                <td>3456</td>
+                <td>3456</td>
+                <td>3456</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="monthlyData" [style.box-shadow]="isClick=='mar'?'0px 3px 12px -6px #777':''">
+        <div class="headerData">
+          <input type="radio" name="radiogroup" [value]="mar" (change)="onSelectionChange('mar')">
+          <span>March</span><span *ngIf="isClick=='mar'">:Excess of 68.67%</span>
+          <span style="float:right;color: #7cc241" class="fa fa-sort-desc" *ngIf="isClick!='mar'"></span>
+          <span style="float: right;color: #7cc241" *ngIf="isClick!='mar'">45.89%</span>
+          <div [ngClass]="isClick=='mar'?'monthBorder':''"></div>
+          <div style="clear:both"></div>
+        </div>
+        <div class="bodyData" *ngIf="isClick=='mar'" [style.border-top]="isClick=='mar'?'none':'1px solid #efefef'">
+          <table class="table monthwise">
+            <thead>
+              <tr>
+                <th></th>
+                <th>GSTR 2A</th>
+                <th>GSTR 3B</th>
+                <th>Excess/Deficit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>IGST:</td>
+                <td>1000</td>
+                <td>6000</td>
+                <td>7000</td>
+              </tr>
+              <tr>
+                <td>CGST:</td>
+                <td>1000</td>
+                <td>6000</td>
+                <td>7000</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Total:</td>
+                <td>3456</td>
+                <td>3456</td>
+                <td>3456</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="monthlyData" [style.box-shadow]="isClick=='apr'?'0px 3px 12px -6px #777':''">
+        <div class="headerData">
+          <input type="radio" name="radiogroup" [value]="apr" (change)="onSelectionChange('apr')">
+          <span>April</span><span *ngIf="isClick=='apr'">:Excess of 68.67%</span>
+          <span style="float:right;color: #7cc241" class="fa fa-sort-desc" *ngIf="isClick!='apr'"></span>
+          <span style="float: right;color: #7cc241" *ngIf="isClick!='apr'">45.89%</span>
+          <div [ngClass]="isClick=='apr'?'monthBorder':''"></div>
+          <div style="clear:both"></div>
+        </div>
+        <div class="bodyData" *ngIf="isClick=='apr'" [style.border-top]="isClick=='apr'?'none':'1px solid #efefef'">
+          <table class="table monthwise">
+            <thead>
+              <tr>
+                <th></th>
+                <th>GSTR 2A</th>
+                <th>GSTR 3B</th>
+                <th>Excess/Deficit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>IGST:</td>
+                <td>1000</td>
+                <td>6000</td>
+                <td>7000</td>
+              </tr>
+              <tr>
+                <td>CGST:</td>
+                <td>1000</td>
+                <td>6000</td>
+                <td>7000</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Total:</td>
+                <td>3456</td>
+                <td>3456</td>
+                <td>3456</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="monthlyData" [style.box-shadow]="isClick=='may'?'0px 3px 12px -6px #777':''">
+        <div class="headerData">
+          <input type="radio" name="radiogroup" [value]="may" (change)="onSelectionChange('may')">
+          <span>May</span><span *ngIf="isClick=='may'">:Excess of 68.67%</span>
+          <span style="float:right;color: #7cc241" class="fa fa-sort-desc" *ngIf="isClick!='may'"></span>
+          <span style="float: right;color: #7cc241" *ngIf="isClick!='may'">45.89%</span>
+          <div [ngClass]="isClick=='may'?'monthBorder':''"></div>
+          <div style="clear:both"></div>
+        </div>
+        <div class="bodyData" *ngIf="isClick=='may'" [style.border-top]="isClick=='may'?'none':'1px solid #efefef'">
+          <table class="table monthwise">
+            <thead>
+              <tr>
+                <th></th>
+                <th>GSTR 2A</th>
+                <th>GSTR 3B</th>
+                <th>Excess/Deficit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>IGST:</td>
+                <td>1000</td>
+                <td>6000</td>
+                <td>7000</td>
+              </tr>
+              <tr>
+                <td>CGST:</td>
+                <td>1000</td>
+                <td>6000</td>
+                <td>7000</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Total:</td>
+                <td>3456</td>
+                <td>3456</td>
+                <td>3456</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="monthlyData" [style.box-shadow]="isClick=='jun'?'0px 3px 12px -6px #777':''">
+        <div class="headerData">
+          <input type="radio" name="radiogroup" [value]="jun" (change)="onSelectionChange('jun')" >
+          <span>June</span><span *ngIf="isClick=='jun'">:Excess of 68.67%</span>
+          <span style="float:right;color: #7cc241" class="fa fa-sort-desc" *ngIf="isClick!='jun'"></span>
+          <span style="float: right;color: #7cc241" *ngIf="isClick!='jun'">45.89%</span>
+          <div [ngClass]="isClick=='jun'?'monthBorder':''"></div>
+          <div style="clear:both"></div>
+        </div>
+        <div class="bodyData" *ngIf="isClick=='jun'" [style.border-top]="isClick=='jun'?'none':'1px solid #efefef'">
+          <table class="table monthwise">
+            <thead>
+              <tr>
+                <th></th>
+                <th>GSTR 2A</th>
+                <th>GSTR 3B</th>
+                <th>Excess/Deficit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>IGST:</td>
+                <td>1000</td>
+                <td>6000</td>
+                <td>7000</td>
+              </tr>
+              <tr>
+                <td>CGST:</td>
+                <td>1000</td>
+                <td>6000</td>
+                <td>7000</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Total:</td>
+                <td>3456</td>
+                <td>3456</td>
+                <td>3456</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="monthlyData" [style.box-shadow]="isClick=='jul'?'0px 3px 12px -6px #777':''">
+        <div class="headerData">
+          <input type="radio" name="radiogroup" [value]="jul" (change)="onSelectionChange('jul')" >
+          <span>July</span><span *ngIf="isClick=='jul'">:Excess of 68.67%</span>
+          <span style="float:right;color: #7cc241" class="fa fa-sort-desc" *ngIf="isClick!='jul'"></span>
+          <span style="float: right;color: #7cc241" *ngIf="isClick!='jul'">45.89%</span>
+          <div [ngClass]="isClick=='jul'?'monthBorder':''"></div>
+          <div style="clear:both"></div>
+        </div>
+        <div class="bodyData" *ngIf="isClick=='jul'" [style.border-top]="isClick=='jul'?'none':'1px solid #efefef'">
+          <table class="table monthwise">
+            <thead>
+              <tr>
+                <th></th>
+                <th>GSTR 2A</th>
+                <th>GSTR 3B</th>
+                <th>Excess/Deficit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>IGST:</td>
+                <td>1000</td>
+                <td>6000</td>
+                <td>7000</td>
+              </tr>
+              <tr>
+                <td>CGST:</td>
+                <td>1000</td>
+                <td>6000</td>
+                <td>7000</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Total:</td>
+                <td>3456</td>
+                <td>3456</td>
+                <td>3456</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="row fifthRow">
+    <div class="bottomText col-xs-12 col-lg-12">
+        <span>Testing text for design</span>
+    </div>
+  </div>
+  
+  
+  
